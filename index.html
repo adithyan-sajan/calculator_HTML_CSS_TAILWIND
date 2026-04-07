@@ -3,42 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Tailwind Calculator</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body class="flex flex-col  items-center">
-    <!-- main container -->
-    <h1 class="my-15 text-6xl">Calculator</h1>
+  <body class="flex bg-gray-300 flex-col items-center">
+    <h1 class="my-15 text-6xl font-bold text-gray-800">Calculator</h1>
 
-    <div class="max-w-lg bg-gray-400 p-5 text-3xl rounded-lg">
-      <!-- calculator container -->
-      <div class="flex  gap-10  flex-col ">
-        <!-- text input container -->
-        <div class="">
-          <input class="bg-white rounded-lg p-1 text-3xl" type="text" name="" placeholder="0" id="" />
+    <div class="max-w-lg w-full bg-gray-400 p-5 text-3xl rounded-2xl shadow-2xl">
+      <div class="flex gap-8 flex-col">
+        <div class="w-full">
+          <input id="input" class="bg-white rounded-lg p-4 text-4xl w-full text-right outline-none font-mono shadow-inner" type="text" placeholder="0" />
         </div>
-        <!-- input buttons container -->
-        <div class="grid grid-cols-4 gap-5 items">
-          <div class="flex justify-center items-center bg-gray-700 p-2 rounded-lg aspect-square">7</div>
-          <div class="flex justify-center items-center bg-gray-700 p-2 rounded-lg aspect-square">8</div>
-          <div class="flex justify-center items-center bg-gray-700 p-2 rounded-lg aspect-square">9</div>
-          <div class="flex justify-center items-center bg-amber-400 p-2 rounded-lg aspect-square">*</div>
-          <div class="flex justify-center items-center bg-gray-700 p-2 rounded-lg aspect-square">4</div>
-          <div class="flex justify-center items-center bg-gray-700 p-2 rounded-lg aspect-square">5</div>
-          <div class="flex justify-center items-center bg-gray-700 p-2 rounded-lg aspect-square">6</div>
-          <div class="flex justify-center items-center bg-amber-400 p-2 rounded-lg aspect-square">/</div>
-          <div class="flex justify-center items-center bg-gray-700 p-2 rounded-lg aspect-square">1</div>
-          <div class="flex justify-center items-center bg-gray-700 p-2 rounded-lg aspect-square">2</div>
-          <div class="flex justify-center items-center bg-gray-700 p-2 rounded-lg aspect-square">3</div>
-          <div class="flex justify-center items-center bg-amber-400 p-2 rounded-lg aspect-square">-</div>
-          <div class="col-span-2 flex justify-center items-center bg-gray-700 p-2 rounded-lg ">0</div>
-          <div class="flex justify-center items-center bg-gray-700 p-2 rounded-lg aspect-square">.</div>
-          <div class="flex justify-center items-center bg-amber-400 p-2 rounded-lg aspect-square">+</div>
-          <div class="flex justify-center items-center bg-amber-400 p-2 rounded-lg aspect-square">AC</div>
-          <div class="col-span-2 flex justify-center items-center bg-amber-400 p-2 rounded-lg">C</div>
-          <div class="flex justify-center items-center bg-amber-400 p-2 rounded-lg aspect-square">=</div>
+
+        <div class="grid grid-cols-4 gap-5">
+          <button onclick="updateDisplay('7')" class="flex justify-center items-center bg-gray-700 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">7</button>
+          <button onclick="updateDisplay('8')" class="flex justify-center items-center bg-gray-700 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">8</button>
+          <button onclick="updateDisplay('9')" class="flex justify-center items-center bg-gray-700 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">9</button>
+          <button onclick="updateDisplay('*')" class="flex justify-center items-center bg-amber-400 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">*</button>
+
+          <button onclick="updateDisplay('4')" class="flex justify-center items-center bg-gray-700 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">4</button>
+          <button onclick="updateDisplay('5')" class="flex justify-center items-center bg-gray-700 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">5</button>
+          <button onclick="updateDisplay('6')" class="flex justify-center items-center bg-gray-700 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">6</button>
+          <button onclick="updateDisplay('/')" class="flex justify-center items-center bg-amber-400 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">/</button>
+
+          <button onclick="updateDisplay('1')" class="flex justify-center items-center bg-gray-700 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">1</button>
+          <button onclick="updateDisplay('2')" class="flex justify-center items-center bg-gray-700 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">2</button>
+          <button onclick="updateDisplay('3')" class="flex justify-center items-center bg-gray-700 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">3</button>
+          <button onclick="updateDisplay('-')" class="flex justify-center items-center bg-amber-400 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">-</button>
+
+          <button onclick="updateDisplay('0')" class="col-span-2 flex justify-center items-center bg-gray-700 text-white p-2 rounded-lg hover:brightness-110 active:scale-95 transition-all">0</button>
+          <button onclick="updateDisplay('.')" class="flex justify-center items-center bg-gray-700 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">.</button>
+          <button onclick="updateDisplay('+')" class="flex justify-center items-center bg-amber-400 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">+</button>
+
+          <button onclick="clearDisplay()" class="flex justify-center items-center bg-red-500 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">AC</button>
+          <button onclick="clearLast()" class="flex justify-center col-span-2 items-center bg-red-500 text-white p-2 rounded-lg hover:brightness-110 active:scale-95 transition-all">C</button>
+          <button class="flex justify-center items-center bg-amber-400 text-white p-2 rounded-lg aspect-square hover:brightness-110 active:scale-95 transition-all">=</button>
         </div>
       </div>
     </div>
   </body>
+  <script src="./script.js"></script>
 </html>
